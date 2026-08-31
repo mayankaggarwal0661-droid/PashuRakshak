@@ -1,0 +1,78 @@
+/* ---------------------------------------------------------------------
+   PashuRakshak design tokens — v2 (redesign)
+
+   Direction: a warm, modern rural-service look — the kind of clean,
+   trustworthy interface you'd want a farmer or a field worker to feel
+   confident using on a phone. Greens for pasture/health, a warm saffron
+   for warmth/energy (and to nod at the tricolour without being literal
+   about it), a single clear red reserved only for CRITICAL alerts.
+   --------------------------------------------------------------------- */
+:root {
+  /* Palette */
+  --ink: #1b2b22;
+  --ink-soft: #5b6b5f;
+  --bg: #f5f9f5;
+  --surface: #ffffff;
+  --surface-tint: #eef6ee;
+
+  --green: #1f7a4d;
+  --green-deep: #0f5132;
+  --green-soft: rgba(31, 122, 77, 0.10);
+
+  --saffron: #e8871e;
+  --saffron-soft: rgba(232, 135, 30, 0.12);
+
+  --alarm: #d6483a;
+  --alarm-soft: rgba(214, 72, 58, 0.10);
+
+  --border: #dfe8e0;
+  --border-strong: #c3d2c6;
+
+  --shadow-sm: 0 1px 3px rgba(15, 81, 50, 0.08);
+  --shadow-md: 0 6px 20px rgba(15, 81, 50, 0.10);
+
+  /* Type */
+  --font-display: "Poppins", "Zilla Slab", "Segoe UI", sans-serif;
+  --font-body: "Inter", "Work Sans", -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  margin: 0;
+  color: var(--green-deep);
+}
+
+a { color: var(--green-deep); }
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

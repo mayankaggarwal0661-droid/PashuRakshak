@@ -1,0 +1,28 @@
+# Java / Spring Boot
+target/
+**/target/
+**/data/
+*.mv.db
+*.trace.db
+*.class
+
+# C++ binaries
+cpp-risk-engine/*.exe
+cpp-risk-engine/*.o
+cpp-risk-engine/risk_engine
+*.exe
+
+# Node / React
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+.env
+.env.local
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
