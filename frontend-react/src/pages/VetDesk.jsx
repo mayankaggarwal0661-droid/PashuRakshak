@@ -152,7 +152,7 @@ export default function VetDesk() {
           <h2 style={{ margin: 0 }}>{t.vets.onRecord}</h2>
           <button className="btn-secondary" onClick={getUserLocation} disabled={userLocating}>
             <Navigation size={14} style={{ marginRight: 6, verticalAlign: -2 }} />
-            {userLocating ? 'Locating...' : userLocation ? 'Sorted by proximity ✓' : 'Use my location'}
+            {userLocating ? (t.vets.locating || 'Locating…') : userLocation ? (t.vets.sortedByProximity || 'Sorted by proximity ✓') : (t.vets.useMyLocation || 'Use my location')}
           </button>
         </div>
         
@@ -162,7 +162,7 @@ export default function VetDesk() {
             <div key={v.id} className="ledger-row" style={{ gridTemplateColumns: '1fr 1fr 1fr auto' }}>
               <div className="ledger-main">
                 <div className="animal">{v.name}</div>
-                {v.distanceKm != null && <div className="meta" style={{ color: '#d97706' }}>{v.distanceKm.toFixed(1)} km away</div>}
+                {v.distanceKm != null && <div className="meta" style={{ color: '#d97706' }}>{v.distanceKm.toFixed(1)} {t.vets.kmAway || 'km away'}</div>}
               </div>
               <div className="ledger-village">{v.assignedRegion}</div>
               <div className="ledger-village">{v.phone}</div>

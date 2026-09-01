@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Syringe, AlertCircle } from 'lucide-react'
+import { AlertCircle } from 'lucide-react'
 import { useLanguage } from '../i18n/LanguageContext.jsx'
 import { species as speciesLabels } from '../i18n/translations.js'
 
@@ -43,23 +43,23 @@ const VACCINE_SCHEDULE = {
 }
 
 export default function VaccinationGuide() {
-  const { lang } = useLanguage()
+  const { t, lang } = useLanguage()
+  const tv = t.vaccines || {}
   const speciesDict = speciesLabels[lang] || speciesLabels.en
   
   const [selectedSpecies, setSelectedSpecies] = useState('cattle')
-
   const schedule = VACCINE_SCHEDULE[selectedSpecies] || []
 
   return (
     <>
       <section className="panel">
-        <h2>Vaccination Guide</h2>
-        <p className="hint">Select your livestock to view the recommended vaccination schedule.</p>
+        <h2>{tv.heading || 'Vaccination Guide'}</h2>
+        <p className="hint">{tv.hint || 'Select your livestock to view the recommended vaccination schedule.'}</p>
 
         <div className="form-grid" style={{ marginBottom: 24, marginTop: 16 }}>
           <div className="full">
-            <label htmlFor="speciesSelect">Species</label>
-            <select 
+            <label htmlFor="speciesSelect">{tv.speciesLabel || 'Species'}</label>
+            <select
               id="speciesSelect"
               value={selectedSpecies}
               onChange={(e) => setSelectedSpecies(e.target.value)}
@@ -81,7 +81,7 @@ export default function VaccinationGuide() {
                 </div>
                 <div className="ledger-main">
                   <div className="animal">{vac.name}</div>
-                  <div className="meta">Booster: {vac.booster}</div>
+                  <div className="meta">{tv.booster || 'Booster'}: {vac.booster}</div>
                 </div>
                 <div className="ledger-status" style={{ textAlign: 'left', fontWeight: 'normal', color: 'var(--ink-muted)' }}>
                   {vac.notes}
@@ -90,13 +90,13 @@ export default function VaccinationGuide() {
             ))}
           </div>
         ) : (
-          <div className="empty-state">No vaccination data available for this species.</div>
+          <div className="empty-state">{tv.noData || 'No vaccination data available for this species.'}</div>
         )}
 
         <div className="status-msg" style={{ marginTop: 24, display: 'flex', alignItems: 'flex-start', gap: 8 }}>
           <AlertCircle size={16} style={{ color: '#d97706', flexShrink: 0, marginTop: 2 }} />
           <span style={{ fontSize: 13, color: '#92400e' }}>
-            <strong>Disclaimer:</strong> This schedule is a general guideline. Consult your local veterinarian for region-specific requirements, especially during disease outbreaks. Always ensure animals are dewormed before vaccination.
+            {tv.disclaimer || 'This schedule is a general guideline. Consult your local veterinarian for region-specific requirements.'}
           </span>
         </div>
       </section>
