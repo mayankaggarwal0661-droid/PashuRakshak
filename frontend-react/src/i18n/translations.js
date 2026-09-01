@@ -11,6 +11,7 @@ export const translations = {
       ledger: 'Case ledger',
       vets: 'Veterinary desk',
       map: 'Find a vet',
+      vaccines: 'Vaccination',
     },
     report: {
       heading: 'Report a sick or injured animal',
@@ -103,9 +104,10 @@ export const translations = {
     heroBadges: { risk: 'समझयोग्य जोखिम आकलन', vets: 'वास्तविक नजदीकी पशु चिकित्सक', helpline: '24/7 हेल्पलाइन: 1962' },
     nav: {
       report: 'मामला दर्ज करें',
-      ledger: 'केस लेजर',
-      vets: 'पशु चिकित्सा डेस्क',
-      map: 'नज़दीकी पशु चिकित्सक खोजें',
+      ledger: 'मामलों का रजिस्टर',
+      vets: 'पशु चिकित्सक डेस्क',
+      map: 'पशु चिकित्सक खोजें',
+      vaccines: 'टीकाकरण',
     },
     report: {
       heading: 'बीमार या घायल पशु की रिपोर्ट करें',
@@ -197,10 +199,11 @@ export const translations = {
     heroKicker: 'एआई-सहाय्यित · द्विभाषिक · शेतासाठी बनवलेले',
     heroBadges: { risk: 'स्पष्ट जोखीम मूल्यमापन', vets: 'वास्तविक जवळचे पशुवैद्य', helpline: '24/7 हेल्पलाइन: 1962' },
     nav: {
-      report: 'तक्रार नोंदवा',
-      ledger: 'केस नोंदवही',
-      vets: 'पशुवैद्यकीय कक्ष',
-      map: 'जवळचा पशुवैद्य शोधा',
+      report: 'केस नोंदवा',
+      ledger: 'केस लेजर',
+      vets: 'पशुवैद्यकीय डेस्क',
+      map: 'पशुवैद्य शोधा',
+      vaccines: 'लसीकरण',
     },
     report: {
       heading: 'आजारी किंवा जखमी जनावराची नोंद करा',
