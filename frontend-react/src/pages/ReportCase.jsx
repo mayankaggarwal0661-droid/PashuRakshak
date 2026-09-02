@@ -360,22 +360,22 @@ export default function ReportCase() {
 
             <div className="full section-box">
               <label style={{ fontSize: 16, borderBottom: '1px solid var(--border)', paddingBottom: 8, marginBottom: 12 }}>
-                Animal Specifications (Optional)
+                {t.report.animalSpecs || 'Animal Specifications (Optional)'}
               </label>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '15px' }}>
                 <div>
-                  <label>Unit</label>
+                  <label>{t.report.unit || 'Unit'}</label>
                   <select value={form.unit} onChange={e => setForm({...form, unit: e.target.value})}>
-                    <option value="cm/kg">Metric (cm / kg)</option>
-                    <option value="inches/lbs">Imperial (inches / lbs)</option>
+                    <option value="cm/kg">{t.report.unitMetric || 'Metric (cm / kg)'}</option>
+                    <option value="inches/lbs">{t.report.unitImperial || 'Imperial (inches / lbs)'}</option>
                   </select>
                 </div>
                 <div>
-                  <label>Height ({form.unit.split('/')[0]})</label>
+                  <label>{t.report.height || 'Height'} ({form.unit.split('/')[0]})</label>
                   <input type="number" step="any" min="0" value={form.height} onChange={e => setForm({...form, height: e.target.value})} placeholder="e.g. 150" />
                 </div>
                 <div>
-                  <label>Weight ({form.unit.split('/')[1]})</label>
+                  <label>{t.report.weight || 'Weight'} ({form.unit.split('/')[1]})</label>
                   <input type="number" step="any" min="0" value={form.weight} onChange={e => setForm({...form, weight: e.target.value})} placeholder="e.g. 500" />
                 </div>
               </div>
@@ -403,7 +403,7 @@ export default function ReportCase() {
                   <div className="voice-report-header">
                     <span className="voice-report-title">
                       <Mic size={15} style={{ marginRight: 6, verticalAlign: -2 }} />
-                      Voice Reporting
+                      {t.report.voiceReporting || 'Voice Reporting'}
                     </span>
                     <select
                       value={voiceLang}
@@ -416,18 +416,18 @@ export default function ReportCase() {
                     </select>
                   </div>
                   <p className="voice-report-hint">
-                    Press the mic and speak your symptoms in your language — it will be auto-filled below.
+                    {t.report.voiceHint || 'Press the mic and speak your symptoms in your language — it will be auto-filled below.'}
                   </p>
                   <div className="voice-controls">
                     {!voiceListening ? (
                       <button type="button" className="btn-voice" onClick={startVoice}>
                         <Mic size={18} />
-                        Start Speaking
+                        {t.report.voiceStart || 'Start Speaking'}
                       </button>
                     ) : (
                       <button type="button" className="btn-voice listening" onClick={stopVoice}>
                         <MicOff size={18} />
-                        Stop
+                        {t.report.voiceStop || 'Stop'}
                         <span className="voice-pulse" />
                       </button>
                     )}
@@ -442,12 +442,12 @@ export default function ReportCase() {
 
                 {/* Custom / transcribed symptom text */}
                 <div style={{ marginTop: 12 }}>
-                  <label>Describe Symptom / Voice Transcript <span style={{ fontWeight: 400, opacity: 0.6 }}>(Optional)</span></label>
+                  <label>{t.report.describeSymptom || 'Describe Symptom / Voice Transcript'} <span style={{ fontWeight: 400, opacity: 0.6 }}>{t.report.describeSymptomOptional || '(Optional)'}</span></label>
                   <textarea
                     rows={3}
                     value={customSymptom}
                     onChange={e => setCustomSymptom(e.target.value)}
-                    placeholder="Type here, or use Voice Reporting above to speak your symptoms..."
+                    placeholder={t.report.describeSymptomPlaceholder || 'Type here, or use Voice Reporting above to speak your symptoms...'}
                     style={{ resize: 'vertical' }}
                   />
                 </div>
@@ -577,13 +577,13 @@ export default function ReportCase() {
                 <div className="temp-meds-header">
                   <span className="temp-meds-icon">⚕️</span>
                   <div>
-                    <div className="temp-meds-title">Temporary Medication Guide</div>
-                    <div className="temp-meds-sub">For: <strong>{guide.name}</strong> — while awaiting veterinary care</div>
+                    <div className="temp-meds-title">{t.report.tempMedsTitle || 'Temporary Medication Guide'}</div>
+                    <div className="temp-meds-sub">{t.report.tempMedsSub || 'For:'} <strong>{guide.name}</strong> {t.report.tempMedsAwaiting || '— while awaiting veterinary care'}</div>
                   </div>
                 </div>
 
                 <div className="temp-meds-warning">
-                  ⚠️ <strong>This is first-aid only.</strong> Contact a vet immediately. Do not replace professional diagnosis with this guide.
+                  ⚠️ <strong>{t.report.tempMedsFirstAidOnly || 'This is first-aid only.'}</strong> {t.report.tempMedsWarning || 'Contact a vet immediately. Do not replace professional diagnosis with this guide.'}
                 </div>
 
                 <div className="temp-meds-list">
@@ -591,8 +591,8 @@ export default function ReportCase() {
                     <div key={i} className="temp-med-row">
                       <div className="temp-med-name">{m.drug}</div>
                       <div className="temp-med-details">
-                        <span className="temp-med-tag">Dose</span> {m.dose}
-                        <span className="temp-med-tag" style={{ marginLeft: 10 }}>Frequency</span> {m.freq}
+                        <span className="temp-med-tag">{t.report.dose || 'Dose'}</span> {m.dose}
+                        <span className="temp-med-tag" style={{ marginLeft: 10 }}>{t.report.frequency || 'Frequency'}</span> {m.freq}
                       </div>
                       {m.note && <div className="temp-med-note">📌 {m.note}</div>}
                     </div>
